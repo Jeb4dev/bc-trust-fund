@@ -10,7 +10,7 @@ contract CrowdFunding {
         uint256 deadline;
         uint256 amountCollected;
         string image;
-        address[] donors;
+        address[] donators;
         uint256[] amounts;
     }
 
@@ -42,7 +42,7 @@ contract CrowdFunding {
 
         Campaign storage campaign = campaigns[_id];
 
-        campaign.donors.push(msg.sender);
+        campaign.donators.push(msg.sender);
         campaign.amounts.push(amount);
 
         (bool sent,) = payable(campaign.owner).call{value: amount}("");
@@ -53,7 +53,7 @@ contract CrowdFunding {
     }
 
     function getDonators(uint256 _id) view public returns (address[] memory, uint256[] memory) {
-        return (campaigns[_id].donors, campaigns[_id].donations);
+        return (campaigns[_id].donators, campaigns[_id].amounts);
     }
 
     function getCampaigns() public view returns (Campaign[] memory) {

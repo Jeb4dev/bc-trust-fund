@@ -1,15 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import {BrowserRouter as Router} from "react-router-dom";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import {BrowserRouter as Router} from 'react-router-dom';
 import {ThirdwebProvider} from '@thirdweb-dev/react';
-import App from "./App.jsx";
-import "./index.css";
-import { StateContextProvider } from "./context";
+import {Sepolia} from "@thirdweb-dev/chains";
+
+import {StateContextProvider} from './context';
+import App from './App';
+import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-    <ThirdwebProvider chainId={11155111}>
+    <ThirdwebProvider activeChain={Sepolia}>
         <Router>
             <StateContextProvider>
                 <App/>

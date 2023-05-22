@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const CustomButton = ({ btnType, title, handleClick, styles }) => {
     return (
@@ -9,7 +9,7 @@ const CustomButton = ({ btnType, title, handleClick, styles }) => {
         >
             {title}
         </button>
-    );
+    )
 }
 
-export default CustomButton;
+export default CustomButton

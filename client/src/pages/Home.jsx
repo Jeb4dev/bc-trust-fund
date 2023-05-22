@@ -12,7 +12,11 @@ const Home = () => {
     const fetchCampaigns = async () => {
         setIsLoading(true);
         const data = await getCampaigns();
-        setCampaigns(data);
+        // remove campaigns that have expired
+        const filteredCampaigns = data.filter((campaign) => campaign.deadline > Date.now());
+        // remove campaigns that have been fully funded
+        filteredCampaigns.filter((campaign) => campaign.amountCollected < campaign.target);
+        setCampaigns(filteredCampaigns);
         setIsLoading(false);
     }
 
